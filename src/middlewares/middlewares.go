@@ -18,7 +18,7 @@ func Autenticar(proximaFuncao http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		_, erro := cookies.Ler(r)
 		if erro != nil {
-			http.Redirect(w, r, "/login", http.StatusFound)
+			http.Redirect(w, r, "/login", 302)
 			return
 		}
 		proximaFuncao(w, r)
